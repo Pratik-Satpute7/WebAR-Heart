@@ -10,7 +10,7 @@
 <body style="margin: 0; overflow: hidden;">
     <a-scene
         embedded
-        arjs="sourceType: webcam; debugUIEnabled: false; trackingMethod: best; hitTestingEnabled: true;"
+        arjs="sourceType: webcam; debugUIEnabled: false;"
         vr-mode-ui="enabled: false"
         renderer="colorManagement: true; physicallyCorrectLights: true; alpha: true;">
 
@@ -18,24 +18,19 @@
             <a-asset-item id="heartModel" src="heart.glb"></a-asset-item>
         </a-assets>
 
-        <!-- Hit Testing -->
-        <a-entity id="cursor" raycaster="objects: .clickable" cursor="fuse: false;"></a-entity>
-
-        <!-- 3D Model (Hidden by default) -->
+        <!-- 3D Model -->
         <a-entity id="heart" gltf-model="#heartModel" scale="0.5 0.5 0.5" visible="false"></a-entity>
 
-        <a-camera position="0 1.6 5" camera="fov: 90"></a-camera>
+        <a-camera position="0 1.6 0"></a-camera>
     </a-scene>
 
     <script>
         document.querySelector("a-scene").addEventListener("click", function (event) {
             let heart = document.querySelector("#heart");
 
-            if (event.detail.intersection) {
-                let position = event.detail.intersection.point;
-                heart.setAttribute("position", position.x + " " + position.y + " " + position.z);
-                heart.setAttribute("visible", "true");
-            }
+            // Place model slightly in front of the camera
+            heart.setAttribute("position", "0 0 -2");
+            heart.setAttribute("visible", "true");
         });
     </script>
 </body>
