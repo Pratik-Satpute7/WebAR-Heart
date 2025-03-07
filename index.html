@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web AR Plane Detection</title>
+    <script src="https://aframe.io/releases/1.4.0/aframe.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/AR-js-org/AR.js@master/aframe/build/aframe-ar.min.js"></script>
+</head>
+<body style="margin: 0; overflow: hidden;">
+    <a-scene
+        embedded
+        arjs="sourceType: webcam; debugUIEnabled: false;"
+        vr-mode-ui="enabled: false"
+        renderer="colorManagement: true; physicallyCorrectLights: true; alpha: true;">
+
+        <a-assets>
+            <a-asset-item id="heartModel" src="heart.glb"></a-asset-item>
+        </a-assets>
+
+        <!-- 3D Model -->
+        <a-entity id="heart" gltf-model="#heartModel" scale="0.5 0.5 0.5" visible="false"></a-entity>
+
+        <a-camera position="0 1.6 0"></a-camera>
+    </a-scene>
+
+    <script>
+        document.querySelector("a-scene").addEventListener("click", function (event) {
+            let heart = document.querySelector("#heart");
+
+            // Place model slightly in front of the camera
+            heart.setAttribute("position", "0 0 -2");
+            heart.setAttribute("visible", "true");
+        });
+    </script>
+</body>
+</html>
