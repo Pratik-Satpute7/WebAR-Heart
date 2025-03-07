@@ -21,8 +21,8 @@
         <!-- 3D Model -->
         <a-entity id="heart" gltf-model="#heartModel" scale="0.5 0.5 0.5" visible="false"></a-entity>
 
-        <!-- Camera moved back -->
-        <a-camera position="0 1.6 3"></a-camera>
+        <!-- Updated Camera with wider FOV and further position -->
+        <a-camera position="0 1.6 5" camera="fov: 120"></a-camera>
     </a-scene>
 
     <script>
@@ -30,7 +30,7 @@
             let heart = document.querySelector("#heart");
 
             // Place model slightly in front of the camera
-            heart.setAttribute("position", "0 0 -3");
+            heart.setAttribute("position", "0 0 -2");
             heart.setAttribute("visible", "true");
         });
     </script>
