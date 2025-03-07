@@ -33,7 +33,12 @@
 
             if (event.detail.intersection) {
                 let position = event.detail.intersection.point;
-                heart.setAttribute("position", position.x + " " + position.y + " " + position.z);
+
+                // Move the model slightly away by adjusting the Z position
+                let offsetZ = 0.5; // Adjust this value as needed
+                let newPosition = `${position.x} ${position.y} ${position.z - offsetZ}`;
+
+                heart.setAttribute("position", newPosition);
                 heart.setAttribute("visible", "true");
             }
         });
