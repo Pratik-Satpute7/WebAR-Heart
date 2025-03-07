@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -21,7 +21,8 @@
         <!-- 3D Model -->
         <a-entity id="heart" gltf-model="#heartModel" scale="0.5 0.5 0.5" visible="false"></a-entity>
 
-        <a-camera position="0 1.6 0"></a-camera>
+        <!-- Camera moved back -->
+        <a-camera position="0 1.6 3"></a-camera>
     </a-scene>
 
     <script>
@@ -29,7 +30,7 @@
             let heart = document.querySelector("#heart");
 
             // Place model slightly in front of the camera
-            heart.setAttribute("position", "0 0 -2");
+            heart.setAttribute("position", "0 0 -3");
             heart.setAttribute("visible", "true");
         });
     </script>
